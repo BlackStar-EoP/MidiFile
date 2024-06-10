@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\MidiFile">
+      <UniqueIdentifier>{d9370a90-0fb0-4064-a028-9bcbd8109d72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MidiFile\MidiEvents">
+      <UniqueIdentifier>{70dc16ba-12f8-4d1a-aad7-1c792f2d8559}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MidiFile\MidiEvents\ChannelEvents">
+      <UniqueIdentifier>{59ae77c6-21ec-4478-a59c-c9c213e4f2a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MidiFile\MidiEvents\MetaEvents">
+      <UniqueIdentifier>{4d8d2e6c-e87a-4270-96dc-dd35d60a0d64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\MidiFile\MidiEvents\SysexEvent">
+      <UniqueIdentifier>{f58845d8-44b0-4fad-865a-eae3dac25c16}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\Midi.h">
+      <Filter>Header Files\MidiFile</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiFile.h">
+      <Filter>Header Files\MidiFile</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiHeaderChunk.h">
+      <Filter>Header Files\MidiFile</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiTrackChunk.h">
+      <Filter>Header Files\MidiFile</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MidiEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\SysexEvents\MidiSysexEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\SysexEvent</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiChannelPrefixMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiCopyrightNoticeMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiCuePointMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiEndOfTrackMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiInstrumentNameMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiKeySignatureMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiLyricsMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiMarkerMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiSequenceNumberMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiSequencerSpecificMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiSequenceTrackNameMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiSetTempoMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiSMPTEOffsetMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiTextMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiTimeSignatureMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\MetaEvents\MidiUnknownMetaEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\MetaEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiAfterTouchEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiChannelAfterTouchEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiControllerEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiNoteOffEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiNoteOnEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiPitchBendEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiProgramChangeEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+    <ClInclude Include="MidiFile\MidiEvents\ChannelEvents\MidiChannelEvent.h">
+      <Filter>Header Files\MidiFile\MidiEvents\ChannelEvents</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
