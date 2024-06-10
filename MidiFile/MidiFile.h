@@ -173,7 +173,7 @@ private:
 		return Midi::MICROSECONDS_PER_MINUTE / bpm;
 	}
 
-	uint8_t* MidiFile::read_file(const std::string& file_name, unsigned int& file_size)
+	uint8_t* read_file(const std::string& file_name, unsigned int& file_size)
 	{
 		FILE* fp = fopen(file_name.c_str(), "rb");
 	

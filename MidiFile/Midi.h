@@ -257,19 +257,19 @@ namespace Midi
 		"Low Conga, " // = 64
 		"High Timbale, " // = 65
 		"Low Timbale, " // = 66
-		"High Agogô, " // = 67
-		"Low Agogô, " // = 68
+		"High AgogÃ´, " // = 67
+		"Low AgogÃ´, " // = 68
 		"Cabasa, " // = 69
 		"Maracas, " // = 70
 		"Short Whistle, " // = 71
 		"Long Whistle, " // = 72
-		"Short Güiro, " // = 73
-		"Long Güiro, " // = 74
+		"Short GÃ¼iro, " // = 73
+		"Long GÃ¼iro, " // = 74
 		"Claves, " // = 75
 		"High Wood Block, " // = 76
 		"Low Wood Block, " // = 77
-		"Mute Cuíca, " // = 78
-		"Open Cuíca, " // = 79
+		"Mute CuÃ­ca, " // = 78
+		"Open CuÃ­ca, " // = 79
 		"Mute Triangle, " // = 80
 		"Open Triangle" // = 81
 	};
