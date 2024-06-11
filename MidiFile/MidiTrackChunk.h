@@ -110,6 +110,7 @@ public:
 			}
 			else if (status == MidiEvent::META)
 			{
+				running_status = false;
 				uint32_t bytesread = parse_meta_event(delta_time, file_pos, song_time);
 				file_pos += bytesread;
 			}
