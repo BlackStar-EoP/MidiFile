@@ -8,3 +8,5 @@ If I recall correctly there 3 midi file types, 0 1 and 2.
 One of them was super rare so I never found one for testing. All the rest was able to parse, including SysEx events (obviously the data is ignored)
 
 License as usual: MIT since any restrictive license is not 'free' software.
+
+Attribution: developed by BlackStar of Edge of Panic.

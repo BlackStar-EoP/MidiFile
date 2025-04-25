@@ -27,7 +27,7 @@ public:
 	}
 
 public:
-	int header_location(uint8_t* data)
+	int32_t header_location(uint8_t* data)
 	{
 		std::string header = std::string((const char*) data, HEADER_PARSE_SIZE);
 		
@@ -38,7 +38,7 @@ public:
 			return -1;
 		}
 
-		unsigned int data_pos = header_location + sizeof(MIDI_HEADER_DATA);
+		size_t data_pos = header_location + strlen(MIDI_HEADER_DATA);
 
 		chunk_size = Midi::parse_uint32(data+data_pos);
 		data_pos += sizeof(uint32_t);
@@ -59,7 +59,7 @@ public:
 			return -1;
 		}
 
-		return header_location;
+		return static_cast<int32_t>(header_location);
 	}
 
 public:
