@@ -21,7 +21,7 @@ public:
 	virtual std::string to_string()
 	{
 		char buffer[256];
-		sprintf(buffer, "%u(%f) PITCH BEND EVENT value = %u\n", song_time(), real_time(), m_value);
+		sprintf_s(buffer, "%u(%f) PITCH BEND EVENT value = %u\n", song_time(), real_time(), m_value);
 		return std::string(buffer);
 	}
 

@@ -73,7 +73,7 @@ public:
 	virtual std::string to_string()
 	{
 		char buffer[256];
-		sprintf(buffer, "%u(%f) CONTROLLER EVENT , controller type = %u, value = %u\n", song_time(), real_time(), m_controller_type, m_value);
+		sprintf_s(buffer, "%u(%f) CONTROLLER EVENT , controller type = %u, value = %u\n", song_time(), real_time(), m_controller_type, m_value);
 		return std::string(buffer);
 	}
 
