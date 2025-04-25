@@ -77,7 +77,7 @@ public:
 		bool running_status = false;
 		bool save_status_byte = true;
 		TICKS song_time = 0;
-		while (file_pos - data < chunk_size)
+		while (static_cast<size_t>(file_pos - data) < chunk_size)
 		{
 			uint32_t bytes_read;
 			TICKS delta_time = Midi::parse_var_length(file_pos, bytes_read);

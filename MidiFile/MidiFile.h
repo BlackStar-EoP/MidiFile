@@ -44,7 +44,11 @@ public:
 			sprintf(buffer, "TRACK-%d.txt", chunk->track_number());
 
 			std::string path = location + "/" + buffer;
-			FILE* fp = fopen(path.c_str(), "w+");
+#ifdef _WIN32
+			FILE* fp; fopen_s(&fp, path.c_str(), "w+");
+#else
+            FILE* fp = fopen(path.c_str(), "w+");
+#endif
 			if (fp != nullptr)
 			{
 				for (unsigned int j = 0; j < events.size(); ++j)
@@ -175,7 +179,11 @@ private:
 
 	uint8_t* read_file(const std::string& file_name, unsigned int& file_size)
 	{
-		FILE* fp = fopen(file_name.c_str(), "rb");
+#ifdef _WIN32
+		FILE* fp; fopen_s(&fp, file_name.c_str(), "rb");
+#else
+        FILE* fp = fopen(file_name.c_str(), "rb");
+#endif
 	
 		uint8_t* data = nullptr;
 		if (fp)
@@ -222,7 +230,7 @@ private:
 			if (!chunk->parse())
 				return false;
 		}
-		while(current_track < num_tracks+1);
+		while(current_track < num_tracks + 1u);
 	
 		//int file_size = file_position - data; // TODO verify
 		return true;
