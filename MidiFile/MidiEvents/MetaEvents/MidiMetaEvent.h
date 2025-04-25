@@ -38,10 +38,6 @@ public:
 		m_data += bytes_read;
 	}
 
-	virtual ~MidiMetaEvent()
-	{
-	}
-
 	META_EVENT_TYPE meta_event_type() const
 	{
 		return m_meta_event_type;
