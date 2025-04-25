@@ -41,14 +41,10 @@ public:
 			MidiTrackChunk* chunk = m_track_chunks[i];
 			std::vector<MidiEvent*>& events = chunk->events();
 			char buffer[128];
-			sprintf(buffer, "TRACK-%d.txt", chunk->track_number());
+			sprintf_s(buffer, "TRACK-%d.txt", chunk->track_number());
 
 			std::string path = location + "/" + buffer;
-#ifdef _WIN32
 			FILE* fp; fopen_s(&fp, path.c_str(), "w+");
-#else
-            FILE* fp = fopen(path.c_str(), "w+");
-#endif
 			if (fp != nullptr)
 			{
 				for (unsigned int j = 0; j < events.size(); ++j)
@@ -179,12 +175,7 @@ private:
 
 	uint8_t* read_file(const std::string& file_name, unsigned int& file_size)
 	{
-#ifdef _WIN32
 		FILE* fp; fopen_s(&fp, file_name.c_str(), "rb");
-#else
-        FILE* fp = fopen(file_name.c_str(), "rb");
-#endif
-	
 		uint8_t* data = nullptr;
 		if (fp)
 		{

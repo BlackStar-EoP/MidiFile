@@ -15,7 +15,7 @@ public:
 	virtual std::string to_string()
 	{
 		char buffer[256];
-		sprintf(buffer, "%u(%f) META EVENT : UNKNOWN! (nr=%u)\n", song_time(), real_time(), m_unknown_meta_event_type);
+		sprintf_s(buffer, "%u(%f) META EVENT : UNKNOWN! (nr=%u)\n", song_time(), real_time(), m_unknown_meta_event_type);
 		return std::string(buffer);
 	}
 

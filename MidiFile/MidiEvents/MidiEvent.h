@@ -20,14 +20,16 @@ public:
 
 public:
 	MidiEvent(MIDI_EVENT event_type, TICKS delta_time, TICKS song_time)
-	: m_event_type(event_type)
+    : m_message_length(0)
 	, m_delta_time(delta_time)
 	, m_song_time(song_time)
+    , m_real_time(0.0f)
+    , m_event_type(event_type)
 	, m_message(nullptr)
 	{
 	}
 
-	~MidiEvent()
+	virtual ~MidiEvent()
 	{
 		delete[] m_message;
 	}

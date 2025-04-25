@@ -15,7 +15,7 @@ public:
 	virtual std::string to_string()
 	{
 		char buffer[256];
-		sprintf(buffer, "%u(%f) META EVENT : END OF TRACK, channel= %u\n", song_time(), real_time(), m_channel);
+		sprintf_s(buffer, "%u(%f) META EVENT : END OF TRACK, channel= %u\n", song_time(), real_time(), m_channel);
 		return std::string(buffer);
 	}
 

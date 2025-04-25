@@ -27,7 +27,7 @@ public:
 	virtual std::string to_string()
 	{
 		char buffer[256];
-		sprintf(buffer, "%u(%f) NOTE OFF EVENT , note nr = %u, velocity = %u, channel = %u\n", song_time(), real_time(), m_note_number, m_velocity, channel());
+		sprintf_s(buffer, "%u(%f) NOTE OFF EVENT , note nr = %u, velocity = %u, channel = %u\n", song_time(), real_time(), m_note_number, m_velocity, channel());
 		return std::string(buffer);
 	}
 

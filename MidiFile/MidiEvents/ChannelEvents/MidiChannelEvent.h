@@ -11,10 +11,6 @@ public:
 	{
 	}
 
-	~MidiChannelEvent()
-	{
-	}
-
 	uint8_t channel() const
 	{
 		return m_channel;

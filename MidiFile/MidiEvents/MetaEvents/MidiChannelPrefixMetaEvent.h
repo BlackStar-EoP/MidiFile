@@ -13,7 +13,7 @@ public:
 	virtual std::string to_string()
 	{
 		char buffer[256];
-		sprintf(buffer, "%u(%f) META EVENT : CHANNEL PREFIX\n", song_time(), real_time());
+		sprintf_s(buffer, "%u(%f) META EVENT : CHANNEL PREFIX\n", song_time(), real_time());
 		return std::string(buffer);
 	}
 };

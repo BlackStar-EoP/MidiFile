@@ -52,7 +52,7 @@ enum EMidiManufacturer : uint16_t
     EXTENSION           = 0xFFFFu
 };
 
-std::string get_manufacturer_string(EMidiManufacturer manufacturer)
+inline std::string get_manufacturer_string(EMidiManufacturer manufacturer)
 {
     std::string manufacturer_str;
     switch (manufacturer)
@@ -106,6 +106,7 @@ std::string get_manufacturer_string(EMidiManufacturer manufacturer)
 
     return manufacturer_str;
 }
+
 class MidiSysexEvent : public MidiEvent
 {
 public:
