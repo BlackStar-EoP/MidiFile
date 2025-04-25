@@ -63,9 +63,9 @@ public:
 	}
 
 public:
-	bool parse_header(uint8_t* data)
+	bool parse_header(uint8_t* address)
 	{
-		memcpy(chunk_id, data, MidiTrackChunk::HEADER_SIZE);
+		memcpy(chunk_id, address, MidiTrackChunk::HEADER_SIZE);
 		chunk_id[MidiTrackChunk::HEADER_SIZE] = 0;
 		return (strcmp(TRACK_HEADER_DATA, chunk_id) == 0);
 	}
