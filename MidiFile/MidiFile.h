@@ -230,7 +230,7 @@ private:
 			if (!chunk->parse())
 				return false;
 		}
-		while(current_track < num_tracks+1);
+		while(current_track < num_tracks + 1u);
 	
 		//int file_size = file_position - data; // TODO verify
 		return true;
