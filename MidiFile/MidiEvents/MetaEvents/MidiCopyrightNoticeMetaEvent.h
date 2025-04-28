@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiCopyrightNoticeMetaEvent : public MidiMetaEvent
 {
 public:
@@ -17,11 +19,11 @@ public:
 		m_copyright_notice = Midi::parse_string(data + 1, m_message_length);
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : COPYRIGHT NOTICE, string = %s\n", song_time(), real_time(), m_copyright_notice.c_str());
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") META EVENT : COPYRIGHT NOTICE, string = \"" << m_copyright_notice << "\"\n";
+		return std::string(ss.str());
 	}
 
 private:

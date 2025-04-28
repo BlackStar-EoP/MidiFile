@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiLyricsMetaEvent : public MidiMetaEvent
 {
 public:
@@ -11,11 +13,11 @@ public:
 		m_lyrics = Midi::parse_string(data + 1, m_message_length);
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : LYRICS, string = %s\n", song_time(), real_time(), m_lyrics.c_str());
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") META EVENT : LYRICS, string = \"" << m_lyrics << "\"\n";
+		return std::string(ss.str());
 	}
 
 private:

@@ -2,6 +2,8 @@
 
 #include "MidiChannelEvent.h"
 
+#include <sstream>
+
 class MidiPitchBendEvent : public MidiChannelEvent
 {
 public:
@@ -18,11 +20,11 @@ public:
 		return m_value;
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) PITCH BEND EVENT value = %u\n", song_time(), real_time(), m_value);
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") PITCH BEND EVENT value = " << m_value << "\n";
+		return std::string(ss.str());
 	}
 
 private:

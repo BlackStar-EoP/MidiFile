@@ -5,7 +5,7 @@
 #include "MidiTrackChunk.h"
 #include "MidiEvents/MidiEvent.h"
 #include <vector>
-
+#include <sstream>
 
 class MidiFile
 {
@@ -40,11 +40,11 @@ public:
 		{
 			MidiTrackChunk* chunk = m_track_chunks[i];
 			std::vector<MidiEvent*>& events = chunk->events();
-			char buffer[128];
-			sprintf_s(buffer, "TRACK-%d.txt", chunk->track_number());
 
-			std::string path = location + "/" + buffer;
-			FILE* fp; fopen_s(&fp, path.c_str(), "w+");
+			std::stringstream ss;
+			ss << location << "/TRACK-" << chunk->track_number() << ".txt";
+
+			FILE* fp; fopen_s(&fp, ss.str().c_str(), "w+");
 			if (fp != nullptr)
 			{
 				for (unsigned int j = 0; j < events.size(); ++j)

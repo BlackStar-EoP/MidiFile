@@ -2,6 +2,8 @@
 
 #include "MidiChannelEvent.h"
 
+#include <sstream>
+
 class MidiControllerEvent : public MidiChannelEvent
 {
 public:
@@ -70,11 +72,11 @@ public:
 		return m_value;
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) CONTROLLER EVENT , controller type = %u, value = %u\n", song_time(), real_time(), m_controller_type, m_value);
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") CONTROLLER EVENT , controller type = " << ", value = " << m_value << "\n";
+		return std::string(ss.str());
 	}
 
 private:

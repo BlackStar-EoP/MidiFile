@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiSMPTEOffsetMetaEvent : public MidiMetaEvent
 {
 public:
@@ -10,10 +12,10 @@ public:
 	{
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : SMPTE OFFSET\n", song_time(), real_time());
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") META EVENT : SMPTE OFFSET\n";
+		return std::string(ss.str());
 	}
 };
