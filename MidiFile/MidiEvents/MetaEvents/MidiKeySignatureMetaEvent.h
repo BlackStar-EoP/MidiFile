@@ -2,6 +2,9 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
+/* Todo add enum ? */
 class MidiKeySignatureMetaEvent : public MidiMetaEvent
 {
 public:
@@ -12,11 +15,11 @@ public:
 		m_scale = data[1];
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : KEY SIGNATURE todo\n", song_time(), real_time());
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") META EVENT : KEY SIGNATURE key = " << m_key << ", scale = " << m_scale << "\n";
+		return std::string(ss.str());
 	}
 
 private:

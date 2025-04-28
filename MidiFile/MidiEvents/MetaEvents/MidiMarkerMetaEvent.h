@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiMarkerMetaEvent : public MidiMetaEvent
 {
 public:
@@ -11,11 +13,11 @@ public:
 		m_marker = Midi::parse_string(data + 1, m_message_length);
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : MARKER, string = %s\n", song_time(), real_time(), m_marker.c_str());
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") META EVENT : MARKER, string = \"" << m_marker << "\"\n";
+		return std::string(ss.str());
 	}
 
 private:

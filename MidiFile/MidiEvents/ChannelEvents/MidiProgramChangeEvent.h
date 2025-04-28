@@ -2,6 +2,8 @@
 
 #include "MidiChannelEvent.h"
 
+#include <sstream>
+
 static const uint8_t MAX_CHANNEL = 16;
 
 class MidiProgramChangeEvent : public MidiChannelEvent
@@ -24,11 +26,11 @@ public:
 	{
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) PROGRAM CHANGE EVENT , program nr = %u\n", song_time(), real_time(), m_program_number);
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") PROGRAM CHANGE EVENT , program nr = " << m_program_number << "\n";
+		return std::string(ss.str());
 	}
 
 private:

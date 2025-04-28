@@ -2,6 +2,8 @@
 
 #include "MidiChannelEvent.h"
 
+#include <sstream>
+
 class MidiAfterTouchEvent : public MidiChannelEvent
 {
 public:
@@ -24,15 +26,14 @@ public:
 		return m_amount;
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) AFTERTOUCH EVENT , note nr = %u, amount = %u\n", song_time(), real_time(), m_note_number, m_amount);
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") AFTERTOUCH EVENT , note nr = " << m_note_number << ", amount = " << m_amount << "\n";
+		return std::string(ss.str());
 	}
 
 private:
 	uint8_t m_note_number;
 	uint8_t m_amount;
-
 };

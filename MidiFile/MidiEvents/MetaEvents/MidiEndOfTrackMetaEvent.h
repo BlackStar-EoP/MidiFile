@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiEndOfTrackMetaEvent : public MidiMetaEvent
 {
 public:
@@ -12,11 +14,11 @@ public:
 		m_message_length = 0;
 	}
 
-	virtual std::string to_string()
+	std::string to_string() override
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : END OF TRACK, channel= %u\n", song_time(), real_time(), m_channel);
-		return std::string(buffer);
+		std::stringstream ss;
+		ss << song_time() << "(" << real_time() << ") META EVENT : END OF TRACK, channel = " << m_channel << "\n";
+		return std::string(ss.str());
 	}
 
 private:
