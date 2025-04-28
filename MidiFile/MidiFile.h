@@ -5,7 +5,8 @@
 #include "MidiTrackChunk.h"
 #include "MidiEvents/MidiEvent.h"
 #include <vector>
-
+#include <filesystem>
+#include <fstream>
 
 class MidiFile
 {
@@ -44,14 +45,16 @@ public:
 			sprintf_s(buffer, "TRACK-%d.txt", chunk->track_number());
 
 			std::string path = location + "/" + buffer;
-			FILE* fp; fopen_s(&fp, path.c_str(), "w+");
-			if (fp != nullptr)
+
+			std::ofstream file(path);
+
+			if (file.is_open())
 			{
 				for (unsigned int j = 0; j < events.size(); ++j)
 				{
-					fprintf(fp, events[j]->to_string().c_str());
+					file << events[j]->to_string();
 				}
-				fclose(fp);
+				file.close();
 			}
 		}
 	}
@@ -175,31 +178,31 @@ private:
 
 	uint8_t* read_file(const std::string& file_name, unsigned int& file_size)
 	{
-		FILE* fp; fopen_s(&fp, file_name.c_str(), "rb");
-		uint8_t* data = nullptr;
-		if (fp)
+		if (std::filesystem::exists(file_name))
 		{
-			fseek(fp, 0, SEEK_END);
-			long size = ftell(fp);
-			rewind(fp);
-
-			if (size > 0)
+			/* If your MIDI is more than 4GB it's not even a black midi anymore */
+			uint32_t size = static_cast<uint32_t>(std::filesystem::file_size(file_name));
+			if (size != 0u)
 			{
-				data = new uint8_t[size];
-				fread(data, sizeof(uint8_t), size, fp);
-			}	
-			fclose(fp);
-			file_size = size;
-			return data;
+				uint8_t* data = new uint8_t[size];
+				std::ifstream f(file_name, std::ios_base::binary);
+				f.read(reinterpret_cast<char*>(data), size);
+				f.close();
+
+				file_size = size;
+				return data;
+			}
 		}
-		file_size = 0;
+
+		/* File doesn't exist or has length of zero */
+		file_size = 0u;
 		return nullptr;
 	}
 
 	bool parse_track_chunks(std::vector<MidiTrackChunk*>& track_chunks, uint8_t* data, uint16_t num_tracks, int header_location)
 	{
 		uint8_t* file_position = data + header_location + MidiHeaderChunk::SIZE;
-		uint32_t current_track = 1;
+		uint32_t current_track = 1u;
 		do
 		{
 			MidiTrackChunk* chunk = new MidiTrackChunk(current_track);
