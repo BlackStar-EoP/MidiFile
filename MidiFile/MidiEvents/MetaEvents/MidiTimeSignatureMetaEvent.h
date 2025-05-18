@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiTimeSignatureMetaEvent : public MidiMetaEvent
 {
 	/*
@@ -28,14 +30,14 @@ public:
 		m_metronome = data[2];
 		m_32nds = data[3];
 		uint32_t bla = pow(2, m_denominator);
-		printf("");
 	}
 
 	virtual std::string to_string()
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : TIME SIGNATURE todo\n", song_time(), real_time());
-		return std::string(buffer);
+		std::stringstream ss;
+
+		ss << song_time() << "(" << real_time() << ")" << " META EVENT : TIME SIGNATURE todo\n";
+		return ss.str();
 	}
 
 private:

@@ -41,10 +41,10 @@ public:
 		{
 			MidiTrackChunk* chunk = m_track_chunks[i];
 			std::vector<MidiEvent*>& events = chunk->events();
-			char buffer[128];
-			sprintf_s(buffer, "TRACK-%d.txt", chunk->track_number());
 
-			std::string path = location + "/" + buffer;
+			std::stringstream ss;
+			ss << "TRACK-" << chunk->track_number() << ".txt";
+			std::string path = location + "/" + ss.str();
 
 			std::ofstream file(path);
 

@@ -2,6 +2,8 @@
 
 #include "MidiChannelEvent.h"
 
+#include <sstream>
+
 class MidiNoteOffEvent : public MidiChannelEvent
 {
 public:
@@ -26,9 +28,10 @@ public:
 	
 	virtual std::string to_string()
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) NOTE OFF EVENT , note nr = %u, velocity = %u, channel = %u\n", song_time(), real_time(), m_note_number, m_velocity, channel());
-		return std::string(buffer);
+		std::stringstream ss;
+
+		ss << song_time() << "(" << real_time() << ")" << " NOTE OFF EVENT , note nr = " << m_note_number << ", velocity = " << m_velocity << ", channel = " << channel() << "\n";
+		return ss.str();
 	}
 
 private:

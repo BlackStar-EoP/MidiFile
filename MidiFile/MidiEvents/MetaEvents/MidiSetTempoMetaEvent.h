@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiSetTempoMetaEvent : public MidiMetaEvent
 {
 public:
@@ -14,9 +16,10 @@ public:
 
 	virtual std::string to_string()
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : SET TEMPO, microseconds per quarter note = %u\n", song_time(), real_time(), m_microseconds_per_quarter_note);
-		return std::string(buffer);
+		std::stringstream ss;
+
+		ss << song_time() << "(" << real_time() << ")" << " SET TEMPO, microseconds per quarter note = " << m_microseconds_per_quarter_note << "\n";
+		return ss.str();
 	}
 
 	uint32_t microseconds_per_quarter_note() const

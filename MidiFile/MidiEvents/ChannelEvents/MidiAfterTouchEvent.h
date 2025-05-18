@@ -1,6 +1,7 @@
 #pragma once
 
 #include "MidiChannelEvent.h"
+#include <sstream>
 
 class MidiAfterTouchEvent : public MidiChannelEvent
 {
@@ -26,9 +27,10 @@ public:
 
 	virtual std::string to_string()
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) AFTERTOUCH EVENT , note nr = %u, amount = %u\n", song_time(), real_time(), m_note_number, m_amount);
-		return std::string(buffer);
+		std::stringstream ss;
+
+		ss << song_time() << "(" << real_time() << ")" << " AFTERTOUCH EVENT , note nr = " << m_note_number << ", amount = " << m_amount << "\n";
+		return ss.str();
 	}
 
 private:

@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiUnknownMetaEvent : public MidiMetaEvent
 {
 public:
@@ -14,9 +16,10 @@ public:
 
 	virtual std::string to_string()
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : UNKNOWN! (nr=%u)\n", song_time(), real_time(), m_unknown_meta_event_type);
-		return std::string(buffer);
+		std::stringstream ss;
+
+		ss << song_time() << "(" << real_time() << ")" << " META EVENT : UNKNOWN nr = " << m_unknown_meta_event_type << "\n";
+		return ss.str();
 	}
 
 private:

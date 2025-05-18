@@ -2,7 +2,9 @@
 
 #include "MidiChannelEvent.h"
 
-static const uint8_t MAX_CHANNEL = 16;
+#include <sstream>
+
+static const uint8_t MAX_CHANNEL = 16u;
 
 class MidiProgramChangeEvent : public MidiChannelEvent
 {
@@ -10,8 +12,8 @@ public:
 	MidiProgramChangeEvent(TICKS delta_time, uint8_t* data, uint8_t channel, TICKS song_time)
 	: MidiChannelEvent(MidiEvent::PROGRAM_CHANGE, channel, delta_time, song_time)
 	{
-		m_program_number = data[0];
-		m_message_length = 1;
+		m_program_number = data[0u];
+		m_message_length = 1u;
 	}
 
 public:
@@ -26,9 +28,10 @@ public:
 
 	virtual std::string to_string()
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) PROGRAM CHANGE EVENT , program nr = %u\n", song_time(), real_time(), m_program_number);
-		return std::string(buffer);
+		std::stringstream ss;
+
+		ss << song_time() << "(" << real_time() << ")" << " PROGRAM CHANGE EVENT , program nr = " << m_program_number << "\n";
+		return ss.str();
 	}
 
 private:

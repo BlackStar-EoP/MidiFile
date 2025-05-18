@@ -2,6 +2,8 @@
 
 #include "MidiMetaEvent.h"
 
+#include <sstream>
+
 class MidiSequenceTrackNameMetaEvent : public MidiMetaEvent
 {
 public:
@@ -13,9 +15,10 @@ public:
 
 	virtual std::string to_string()
 	{
-		char buffer[256];
-		sprintf_s(buffer, "%u(%f) META EVENT : TRACK NAME, string = %s\n", song_time(), real_time(), m_track_name.c_str());
-		return std::string(buffer);
+		std::stringstream ss;
+
+		ss << song_time() << "(" << real_time() << ")" << " META EVENT : TRACK NAME, string = " << m_track_name << "\n";
+		return ss.str();
 	}
 
 	const std::string& track_name() const
