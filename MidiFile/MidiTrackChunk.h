@@ -21,7 +21,7 @@
 #include "MidiEvents/MetaEvents/MidiMetaEvent.h"
 #include "MidiEvents/MetaEvents/MidiSequenceNumberMetaEvent.h"
 #include "MidiEvents/MetaEvents/MidiTextMetaEvent.h"
-#include "MidiEvents/MetaEvents/MidiCopyRightNoticeMetaEvent.h"
+#include "MidiEvents/MetaEvents/MidiCopyrightNoticeMetaEvent.h"
 #include "MidiEvents/MetaEvents/MidiSequenceTrackNameMetaEvent.h"
 #include "MidiEvents/MetaEvents/MidiInstrumentNameMetaEvent.h"
 #include "MidiEvents/MetaEvents/MidiLyricsMetaEvent.h"
