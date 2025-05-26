@@ -9,3 +9,12 @@ target_sources(${PROJECT_NAME} PUBLIC
     BASE_DIRS
       MidiFile
 )
+
+add_executable(${PROJECT_NAME}Test EXCLUDE_FROM_ALL
+  main.cpp
+)
+
+target_link_libraries(${PROJECT_NAME}Test
+  PRIVATE
+    ${PROJECT_NAME}
+)

@@ -6,3 +6,5 @@ ipch
 *.user
 .vs
 mididumps
+build/
+.cache/
