@@ -7,6 +7,7 @@
 #include <vector>
 #include <filesystem>
 #include <fstream>
+#include <cstring>
 
 class MidiFile
 {
@@ -17,7 +18,7 @@ public:
 	{
 		unsigned int file_size;
 		uint8_t* data = read_file(file_name, file_size);
-		
+
 		if (data && file_size > MidiHeaderChunk::HEADER_PARSE_SIZE)
 		{
 			int header_location = m_header_chunk.header_location(data);
@@ -211,21 +212,21 @@ private:
 				return false;
 
 			file_position += MidiTrackChunk::HEADER_SIZE;
-			
+
 			chunk->chunk_size = Midi::parse_uint32(file_position);
 			file_position += sizeof(uint32_t);
-			
+
 			chunk->data = new uint8_t[chunk->chunk_size];
 			memcpy(chunk->data, file_position, chunk->chunk_size);
 			file_position += chunk->chunk_size;
-			
+
 			++current_track;
 			track_chunks.push_back(chunk);
 			if (!chunk->parse())
 				return false;
 		}
 		while(current_track < num_tracks + 1u);
-	
+
 		//int file_size = file_position - data; // TODO verify
 		return true;
 	}
