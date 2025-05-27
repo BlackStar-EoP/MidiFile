@@ -1,5 +1,6 @@
 #pragma once
 
+#include <stdexcept>
 #include <vector>
 
 #include "Midi.h"
@@ -72,10 +73,10 @@ public:
 
 	bool parse()
 	{
+        constexpr uint8_t NO_STATUS = 0;
+
 		uint8_t* file_pos = data;
-		uint8_t last_status_byte = 0;
-		bool running_status = false;
-		bool save_status_byte = true;
+		uint8_t last_status_byte = NO_STATUS;
 		TICKS song_time = 0;
 		while (static_cast<size_t>(file_pos - data) < chunk_size)
 		{
@@ -87,32 +88,30 @@ public:
 
 			uint8_t status = *file_pos; // parse_status_byte() ?
 
-			// Running status
-			if ( (status & 0x80) == 0)
+			if ((status & 0x80) == 0)
 			{
+                // Running status
+                if (last_status_byte == NO_STATUS)
+                {
+                    throw std::runtime_error("Invalid MID: Running status without previous status.");
+                }
 				status = last_status_byte;
-				running_status = true;
-				save_status_byte = false;
 				--bytes_read;
-			}
-			else
-			{
-				running_status = false;
-				save_status_byte = true;
-				++file_pos;
-			}
+			} else {
+                ++file_pos;
+            }
 
 			if (status == MidiEvent::SYSEX)
 			{
-				running_status = false;
 				uint32_t bytesread = parse_sysex_event(delta_time, file_pos, song_time);
 				file_pos += bytesread;
+                last_status_byte = NO_STATUS;
 			}
 			else if (status == MidiEvent::META)
 			{
-				running_status = false;
 				uint32_t bytesread = parse_meta_event(delta_time, file_pos, song_time);
 				file_pos += bytesread;
+                last_status_byte = NO_STATUS;
 			}
 			else
 			{
@@ -153,14 +152,12 @@ public:
 				};
 				m_events.push_back(e);
 				file_pos += e->message_length();
+                last_status_byte = status;
 			}
-
-			if (save_status_byte)
-				last_status_byte = status;
 		}
 		return true;
 	}
-		
+
 	std::vector<MidiEvent*>& events()
 	{
 		return m_events;
