@@ -24,6 +24,7 @@ public:
 
 	void set_program_number(uint8_t program_number)
 	{
+        m_program_number = program_number;
 	}
 
 	virtual std::string to_string()
