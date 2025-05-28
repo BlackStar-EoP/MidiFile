@@ -1,15 +1,23 @@
 // MidiFile.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include <iostream>
+
 #include "MidiFile/MidiFile.h"
 
 int main(int argc, char* argv[])
 {
-	//MidiFile m("d:/dancing queen.MID";)
-	//MidiFile m("d:/n.mid");
-	//MidiFile m("d:/level07.mid");
-	MidiFile m("d:/black.mid");
-	//MidiFile m("d:/maps.mid");
-	m.dump_tracks("d:/mididumps");
+    if (argc < 3) {
+        std::cout << "Usage: " << argv[0] << " <OUTPUTDIR> <FILENAME>" << std::endl;
+        std::exit(-1);
+    }
+
+    const auto outputDir = argv[1];
+    const auto midiFile = argv[2];
+
+    std::cout << "Parsing " << midiFile << std::endl;
+    MidiFile m(midiFile);
+
+    std::cout << "Dumping to: " << outputDir << std::endl;
+    m.dump_tracks(outputDir);
 }

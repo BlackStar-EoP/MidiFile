@@ -2,6 +2,7 @@
 
 #include "Midi.h"
 #include "MidiFile.h"
+#include <cstring>
 
 static const char* MIDI_HEADER_DATA = "MThd";
 
@@ -30,7 +31,7 @@ public:
 	int32_t header_location(uint8_t* data)
 	{
 		std::string header = std::string((const char*) data, HEADER_PARSE_SIZE);
-		
+
 		size_t header_location = header.find(MIDI_HEADER_DATA);
 		if (header_location == std::string::npos)
 		{
