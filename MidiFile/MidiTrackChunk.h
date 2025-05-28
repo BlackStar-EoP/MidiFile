@@ -73,7 +73,7 @@ public:
 
 	bool parse()
 	{
-        constexpr uint8_t NO_STATUS = 0;
+        constexpr uint8_t NO_STATUS = 0u;
 
 		uint8_t* file_pos = data;
 		uint8_t last_status_byte = NO_STATUS;
