@@ -187,7 +187,7 @@ private:
 
 	uint32_t parse_meta_event(TICKS delta_time, uint8_t* file_pos, TICKS song_time)
 	{
-		uint32_t bytes_read = 1;
+		uint32_t bytes_read = 0;
 		uint8_t meta_event_type = *file_pos;
 		bytes_read++; file_pos++;
 		MidiMetaEvent* e = nullptr;

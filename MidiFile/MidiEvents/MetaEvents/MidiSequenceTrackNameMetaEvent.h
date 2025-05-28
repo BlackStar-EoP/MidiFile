@@ -10,7 +10,7 @@ public:
 	MidiSequenceTrackNameMetaEvent(TICKS delta_time, uint8_t* data, TICKS song_time)
 		: MidiMetaEvent(delta_time, data, song_time, MidiMetaEvent::SEQUENCE_TRACK_NAME)
 	{
-		m_track_name = Midi::parse_string(data + 1, m_message_length);
+		m_track_name = parse_string();
 	}
 
 	virtual std::string to_string()

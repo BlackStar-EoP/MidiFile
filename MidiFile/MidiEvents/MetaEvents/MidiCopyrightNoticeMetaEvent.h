@@ -16,7 +16,7 @@ public:
 		{
 			// error
 		}
-		m_copyright_notice = Midi::parse_string(data + 1, m_message_length);
+		m_copyright_notice = parse_string();
 	}
 
 	virtual std::string to_string()

@@ -33,9 +33,8 @@ public:
 	, m_data(data)
 	, m_meta_event_type(meta_event_type)
 	{
-		uint32_t bytes_read;
-		m_message_length = Midi::parse_var_length(data, bytes_read);
-		m_data += bytes_read;
+		m_payload_length = Midi::parse_var_length(data, m_payload_offset);
+        m_message_length = m_payload_length + m_payload_offset;
 	}
 
 	META_EVENT_TYPE meta_event_type() const
@@ -45,6 +44,11 @@ public:
 
 	virtual std::string to_string() = 0;
 protected:
+    std::string parse_string() {
+		return Midi::parse_string(m_data + m_payload_offset, m_payload_length);
+    }
+    uint32_t m_payload_offset;
+    uint32_t m_payload_length;
 	uint8_t* m_data;
 
 private:
