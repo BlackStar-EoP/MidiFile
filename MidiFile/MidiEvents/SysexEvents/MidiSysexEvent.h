@@ -110,8 +110,9 @@ inline std::string get_manufacturer_string(EMidiManufacturer manufacturer)
 class MidiSysexEvent : public MidiEvent
 {
 public:
-	MidiSysexEvent(TICKS delta_time, uint8_t* data, uint32_t event_length, TICKS song_time)
+	MidiSysexEvent(TICKS delta_time, uint8_t* data, uint32_t event_length, TICKS song_time, bool continuation)
 	: MidiEvent(MidiEvent::SYSEX, delta_time, song_time)
+        , m_continuation(continuation)
 	{
 		m_message_length = event_length;
 		copy_message(data, event_length);
@@ -140,9 +141,13 @@ public:
 	{
         std::stringstream ss;
         ss << song_time() << "(" << real_time() << ")" << "SYSEX EVENT Manufacturer = " << get_manufacturer_string(m_manufacturer);
+        if (m_continuation) {
+            ss << " Continuation";
+        }
         return ss.str();
 	}
 
 private:
     EMidiManufacturer m_manufacturer;
+    bool m_continuation;
 };

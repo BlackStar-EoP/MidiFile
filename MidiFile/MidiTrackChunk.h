@@ -101,9 +101,12 @@ public:
                 ++file_pos;
             }
 
-			if (status == MidiEvent::SYSEX)
+            if (status == MidiEvent::SYSEX || status == MidiEvent::SYSEX_CNT_END)
 			{
-				uint32_t bytesread = parse_sysex_event(delta_time, file_pos, song_time);
+                // TODO: Combine SYSEX continuation with previous SYSEX event
+                // TODO: Remove final 0xF7
+                const bool continuation = (status == MidiEvent::SYSEX_CNT_END);
+				uint32_t bytesread = parse_sysex_event(delta_time, file_pos, song_time, continuation);
 				file_pos += bytesread;
                 last_status_byte = NO_STATUS;
 			}
@@ -174,13 +177,13 @@ public:
 	}
 
 private:
-	uint32_t parse_sysex_event(TICKS delta_time, uint8_t* file_pos, TICKS song_time)
+	uint32_t parse_sysex_event(TICKS delta_time, uint8_t* file_pos, TICKS song_time, bool continuation)
 	{
 		uint32_t bytes_read;
 		uint32_t event_size = Midi::parse_var_length(file_pos, bytes_read);
 		file_pos += bytes_read;
 		bytes_read += event_size;
-		MidiSysexEvent* e = new MidiSysexEvent(delta_time, file_pos, event_size, song_time);
+		MidiSysexEvent* e = new MidiSysexEvent(delta_time, file_pos, event_size, song_time, continuation);
 		m_events.push_back(e);
 		return bytes_read;
 	}
