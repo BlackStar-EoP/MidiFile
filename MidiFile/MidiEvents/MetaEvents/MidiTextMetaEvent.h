@@ -10,7 +10,7 @@ public:
 	MidiTextMetaEvent(TICKS delta_time, uint8_t* data, TICKS song_time)
 	: MidiMetaEvent(delta_time, data, song_time, MidiMetaEvent::TEXT)
 	{
-		m_text = Midi::parse_string(data + 1, m_message_length);
+        m_text = parse_string();
 	}
 
 	virtual std::string to_string()

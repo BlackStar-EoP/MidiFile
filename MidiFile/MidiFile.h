@@ -33,6 +33,7 @@ public:
 
 	bool save(const std::string& file_name)
 	{
+        (void)file_name;
 		return true;
 	}
 

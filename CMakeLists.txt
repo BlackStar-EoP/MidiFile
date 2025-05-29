@@ -2,6 +2,10 @@ cmake_minimum_required(VERSION 4.0)
 
 project(MidiFile CXX)
 
+if(PROJECT_IS_TOP_LEVEL)
+  add_definitions(-g2 -Wall -Wextra -Werror)
+endif()
+
 add_library(${PROJECT_NAME} INTERFACE)
 
 target_sources(${PROJECT_NAME} PUBLIC

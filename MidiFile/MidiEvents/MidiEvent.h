@@ -14,7 +14,8 @@ public:
 		PROGRAM_CHANGE		= 0xC0,
 		CHANNEL_AFTERTOUCH  = 0xD0,
 		PITCH_BEND			= 0xE0,
-		SYSEX				= 0xF0,
+        SYSEX               = 0xF0,
+        SYSEX_CNT_END       = 0xF7,
 		META				= 0xFF
 	};
 
@@ -73,7 +74,7 @@ public:
 
 protected:
 	uint32_t m_message_length;
-	
+
 	void copy_message(const uint8_t* data, uint32_t length)
 	{
 		m_message = new uint8_t[length];

@@ -11,7 +11,6 @@ public:
 	: MidiMetaEvent(delta_time, data, song_time, MidiMetaEvent::END_OF_TRACK)
 	{
 		m_channel = *data;
-		m_message_length = 0;
 	}
 
 	virtual std::string to_string()
